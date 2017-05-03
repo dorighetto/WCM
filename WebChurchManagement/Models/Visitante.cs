@@ -11,15 +11,18 @@ namespace WebChurchManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Dizimos
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    [Table("Visitantes")]
+    public partial class Visitante
     {
-        public int Id_Dizimo { get; set; }
-        public int Id_Memb { get; set; }
-        public System.DateTime Mes_Ref { get; set; }
-        public System.DateTime Dt_Mov { get; set; }
-        public decimal Vl_Dizimo { get; set; }
-    
-        public virtual Membros Membros { get; set; }
+        [Key]
+        public int Id_Visit { get; set; }
+        [Required(ErrorMessage = "Campo não pode ser nulo.")]
+        [MaxLength(50, ErrorMessage = "Campo deve conter no máximo 50 caracteres.")]
+        public string Nm_Visit { get; set; }
+        public DateTime Dt_Nasc { get; set; }
+        public string Tel { get; set; }
     }
 }

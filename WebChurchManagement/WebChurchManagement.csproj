@@ -192,65 +192,29 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CargosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MembrosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Agendas.cs">
-      <DependentUpon>WebChurchManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Cargos.cs">
-      <DependentUpon>WebChurchManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Departamentos.cs">
-      <DependentUpon>WebChurchManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Disciplinas.cs">
-      <DependentUpon>WebChurchManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Dizimos.cs">
-      <DependentUpon>WebChurchManagementModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Agenda.cs" />
+    <Compile Include="Models\Cargo.cs" />
+    <Compile Include="Models\Departamento.cs" />
+    <Compile Include="Models\Disciplina.cs" />
+    <Compile Include="Models\Dizimo.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Lancamentos.cs">
-      <DependentUpon>WebChurchManagementModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Lancamento.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Membros.cs">
-      <DependentUpon>WebChurchManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Memb_Depto.cs">
-      <DependentUpon>WebChurchManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Memb_Familiares.cs">
-      <DependentUpon>WebChurchManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Status.cs">
-      <DependentUpon>WebChurchManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Tipos_Lancamentos.cs">
-      <DependentUpon>WebChurchManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Visitantes.cs">
-      <DependentUpon>WebChurchManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WebChurchManagementModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WebChurchManagementModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WebChurchManagementModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WebChurchManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\WebChurchManagementModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WebChurchManagementModel.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Membro.cs" />
+    <Compile Include="Models\MembroDepto.cs" />
+    <Compile Include="Models\MembroFamiliares.cs" />
+    <Compile Include="Models\Status.cs" />
+    <Compile Include="Models\TipoLancamento.cs" />
+    <Compile Include="Models\Visitante.cs" />
+    <Compile Include="Models\WebChurchManagementContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -264,27 +228,10 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\WebChurchManagementModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WebChurchManagementModel.edmx</DependentUpon>
-      <LastGenOutput>WebChurchManagementModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\WebChurchManagementModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WebChurchManagementModel.edmx</DependentUpon>
-      <LastGenOutput>WebChurchManagementModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <EntityDeploy Include="Models\WebChurchManagementModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WebChurchManagementModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\WebChurchManagementModel.edmx.diagram">
-      <DependentUpon>WebChurchManagementModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -331,6 +278,17 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Membros\Create.cshtml" />
+    <Content Include="Views\Membros\Delete.cshtml" />
+    <Content Include="Views\Membros\Details.cshtml" />
+    <Content Include="Views\Membros\Edit.cshtml" />
+    <Content Include="Views\Membros\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout - Cópia .cshtml" />
+    <Content Include="Views\Cargos\Create.cshtml" />
+    <Content Include="Views\Cargos\Delete.cshtml" />
+    <Content Include="Views\Cargos\Details.cshtml" />
+    <Content Include="Views\Cargos\Edit.cshtml" />
+    <Content Include="Views\Cargos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -353,6 +311,7 @@
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

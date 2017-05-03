@@ -11,30 +11,42 @@ namespace WebChurchManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Membros
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    [Table("Membros")]
+    public partial class Membro
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Membros()
+        public Membro()
         {
-            this.Disciplinas = new HashSet<Disciplinas>();
-            this.Dizimos = new HashSet<Dizimos>();
-            this.Memb_Depto = new HashSet<Memb_Depto>();
-            this.Memb_Familiares = new HashSet<Memb_Familiares>();
-            this.Memb_Familiares1 = new HashSet<Memb_Familiares>();
+            this.Disciplinas = new HashSet<Disciplina>();
+            this.Dizimos = new HashSet<Dizimo>();
+            this.Memb_Depto = new HashSet<MembroDepto>();
+            this.Memb_Familiares = new HashSet<MembroFamiliares>();
+            this.Memb_Familiares1 = new HashSet<MembroFamiliares>();
         }
-    
+
+        [Key]
         public int Id_Membros { get; set; }
+        [Required(ErrorMessage = "Campo não pode ser nulo.")]
         public int Id_Cargo { get; set; }
+        [Required(ErrorMessage = "Campo não pode ser nulo.")]
         public int Id_Status { get; set; }
+        [Required(ErrorMessage = "Campo não pode ser nulo.")]
+        [MaxLength(50, ErrorMessage = "Campo deve conter no máximo 50 caracteres.")]
         public string Nome { get; set; }
+        [MaxLength(50, ErrorMessage = "Campo deve conter no máximo 50 caracteres.")]
         public string Mae { get; set; }
+        [MaxLength(50, ErrorMessage = "Campo deve conter no máximo 50 caracteres.")]
         public string Pai { get; set; }
         public string Sexo { get; set; }
         public string Matricula { get; set; }
-        public System.DateTime Dt_Nasc { get; set; }
-        public System.DateTime Dt_Desde { get; set; }
-        public Nullable<bool> Ativo { get; set; }
+        public DateTime Dt_Nasc { get; set; }
+        public DateTime Dt_Desde { get; set; }
+        [DefaultValue(true)]
+        public bool Ativo { get; set; }
         public string Tel1 { get; set; }
         public string Tel2 { get; set; }
         public string Tel3 { get; set; }
@@ -44,21 +56,21 @@ namespace WebChurchManagement.Models
         public string Bairro { get; set; }
         public string Cidade { get; set; }
         public string Uf { get; set; }
-        public Nullable<int> N_Casa { get; set; }
+        public int N_Casa { get; set; }
         public string Foto { get; set; }
         public string Obs { get; set; }
-    
-        public virtual Cargos Cargos { get; set; }
+
+        public virtual Cargo Cargos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Disciplinas> Disciplinas { get; set; }
+        public virtual ICollection<Disciplina> Disciplinas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Dizimos> Dizimos { get; set; }
+        public virtual ICollection<Dizimo> Dizimos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Memb_Depto> Memb_Depto { get; set; }
+        public virtual ICollection<MembroDepto> Memb_Depto { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Memb_Familiares> Memb_Familiares { get; set; }
+        public virtual ICollection<MembroFamiliares> Memb_Familiares { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Memb_Familiares> Memb_Familiares1 { get; set; }
+        public virtual ICollection<MembroFamiliares> Memb_Familiares1 { get; set; }
         public virtual Status Status { get; set; }
     }
 }

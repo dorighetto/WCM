@@ -11,30 +11,41 @@ namespace WebChurchManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Departamentos
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    [Table("Departamentos")]
+    public partial class Departamento
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Departamentos()
+        public Departamento()
         {
-            this.Agendas = new HashSet<Agendas>();
-            this.Lancamentos = new HashSet<Lancamentos>();
-            this.Lancamentos1 = new HashSet<Lancamentos>();
-            this.Memb_Depto = new HashSet<Memb_Depto>();
+            this.Principal = true;
+            this.Ativo = true;
+            this.Agendas = new HashSet<Agenda>();
+            this.Lancamentos = new HashSet<Lancamento>();
+            this.Lancamentos1 = new HashSet<Lancamento>();
+            this.Memb_Depto = new HashSet<MembroDepto>();
         }
-    
+
+        [Key]
         public int Id_Deptos { get; set; }
+        [Required(ErrorMessage = "Campo não pode ser nulo.")]
+        [MaxLength(30, ErrorMessage = "Campo deve conter no máximo 30 caracteres.")]
         public string Nm_Deptos { get; set; }
-        public string Principal { get; set; }
-        public Nullable<bool> Ativo { get; set; }
-    
+        [DefaultValue(true)]
+        public bool Principal { get; set; }
+        [DefaultValue(true)]
+        public bool Ativo { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Agendas> Agendas { get; set; }
+        public virtual ICollection<Agenda> Agendas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Lancamentos> Lancamentos { get; set; }
+        public virtual ICollection<Lancamento> Lancamentos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Lancamentos> Lancamentos1 { get; set; }
+        public virtual ICollection<Lancamento> Lancamentos1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Memb_Depto> Memb_Depto { get; set; }
+        public virtual ICollection<MembroDepto> Memb_Depto { get; set; }
     }
 }

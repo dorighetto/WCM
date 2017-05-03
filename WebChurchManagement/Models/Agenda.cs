@@ -11,15 +11,24 @@ namespace WebChurchManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Agendas
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    [Table("Agendas")]
+    public partial class Agenda
     {
+        [Key]
         public int Id_Agenda { get; set; }
         public int Id_Deptos { get; set; }
-        public System.DateTime Dt_Agenda { get; set; }
+        [Required(ErrorMessage = "Campo não pode ser nulo.")]
+        public DateTime Dt_Agenda { get; set; }
+        [Required(ErrorMessage = "Campo não pode ser nulo.")]
+        [MaxLength(30, ErrorMessage = "Campo deve conter no máximo 30 caracteres.")]
         public string Evento { get; set; }
+        [Required(ErrorMessage = "Campo não pode ser nulo.")]
+        [MaxLength(150, ErrorMessage = "Campo deve conter no máximo 150 caracteres.")]
         public string Desc_Agenda { get; set; }
-    
-        public virtual Departamentos Departamentos { get; set; }
+
+        public virtual Departamento Departamentos { get; set; }
     }
 }

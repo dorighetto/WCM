@@ -11,21 +11,31 @@ namespace WebChurchManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    [Table("Status")]
     public partial class Status
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Status()
         {
-            this.Membros = new HashSet<Membros>();
+            this.Membros = new HashSet<Membro>();
         }
-    
+
+        [Key]
         public int Id_Status { get; set; }
+        [Required(ErrorMessage = "Campo não pode ser nulo.")]
+        [MaxLength(15, ErrorMessage = "Campo deve conter no máximo 15 caracteres.")]
         public string Nm_Status { get; set; }
+        [Required(ErrorMessage = "Campo não pode ser nulo.")]
+        [MaxLength(50, ErrorMessage = "Campo deve conter no máximo 50 caracteres.")]
         public string Desc_Status { get; set; }
-        public Nullable<bool> Ativo { get; set; }
-    
+        [DefaultValue(true)]
+        public bool Ativo { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Membros> Membros { get; set; }
+        public virtual ICollection<Membro> Membros { get; set; }
     }
 }

@@ -11,20 +11,28 @@ namespace WebChurchManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Tipos_Lancamentos
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    [Table("Cargos")]
+    public partial class Cargo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tipos_Lancamentos()
+        public Cargo()
         {
-            this.Lancamentos = new HashSet<Lancamentos>();
+            this.Membros = new HashSet<Membro>();
         }
-    
-        public int Id_Tpo_Lanc { get; set; }
-        public string Desc_Lanc { get; set; }
-        public Nullable<bool> Ativo { get; set; }
-    
+
+        [Key]
+        public int Id_Cargo { get; set; }
+        [Required(ErrorMessage = "Campo não pode ser nulo.")]
+        [MaxLength(30, ErrorMessage = "Campo deve conter no máximo 30 caracteres.")]
+        public string Nome { get; set; }
+        [DefaultValue(true)]
+        public bool Ativo { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Lancamentos> Lancamentos { get; set; }
+        public virtual ICollection<Membro> Membros { get; set; }
     }
 }

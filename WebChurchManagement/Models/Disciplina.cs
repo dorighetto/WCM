@@ -11,17 +11,21 @@ namespace WebChurchManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Memb_Depto
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    [Table("Disciplinas")]
+    public partial class Disciplina
     {
+        [Key]
+        public int Id_Disc { get; set; }
+        [Required(ErrorMessage = "Campo não pode ser nulo.")]
         public int Id_Memb { get; set; }
-        public int Id_Deptos { get; set; }
-        public System.DateTime Dt_Ini { get; set; }
-        public Nullable<System.DateTime> Dt_Fim { get; set; }
-        public string Lider { get; set; }
-        public Nullable<bool> Ativo { get; set; }
-    
-        public virtual Departamentos Departamentos { get; set; }
-        public virtual Membros Membros { get; set; }
+        [MaxLength(50, ErrorMessage = "Campo deve conter no máximo 50 caracteres.")]
+        public string Motivo { get; set; }
+        public DateTime Dt_Ini { get; set; }
+        public DateTime Dt_Fim { get; set; }
+
+        public virtual Membro Membros { get; set; }
     }
 }

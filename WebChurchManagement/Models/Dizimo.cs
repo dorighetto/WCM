@@ -11,14 +11,21 @@ namespace WebChurchManagement.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Memb_Familiares
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    [Table("Dizimos")]
+    public partial class Dizimo
     {
+        [Key]
+        public int Id_Dizimo { get; set; }
+        [Required(ErrorMessage = "Campo não pode ser nulo.")]
         public int Id_Memb { get; set; }
-        public int Id_Memb_Familiar { get; set; }
-        public string Parentesco { get; set; }
-    
-        public virtual Membros Membros { get; set; }
-        public virtual Membros Membros1 { get; set; }
+        public DateTime Mes_Ref { get; set; }
+        public DateTime Dt_Mov { get; set; }
+        [Required(ErrorMessage = "Campo não pode ser nulo.")]
+        public decimal Vl_Dizimo { get; set; }
+
+        public virtual Membro Membros { get; set; }
     }
 }
