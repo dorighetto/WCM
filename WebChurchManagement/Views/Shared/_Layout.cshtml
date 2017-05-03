@@ -7,72 +7,81 @@
     <title>@ViewBag.Title - Meu Aplicativo ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
     @*Inicio do Bootstrap*@
-    <div class="container">
-        <div class="row profile">
-            <div class="col-md-3">
-                <div class="profile-sidebar">
-                    <!-- SIDEBAR USERPIC -->
-                    <div class="profile-userpic">
-                        <img src="http://keenthemes.com/preview/metronic/theme/assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
-                    </div>
-                    <!-- END SIDEBAR USERPIC -->
-                    <!-- SIDEBAR USER TITLE -->
-                    <div class="profile-usertitle">
-                        <div class="profile-usertitle-name">
-                            Marcus Doe
-                        </div>
-                        <div class="profile-usertitle-job">
-                            Developer
-                        </div>
-                    </div>
-                    <!-- END SIDEBAR USER TITLE -->
-                    <!-- SIDEBAR BUTTONS -->
-                    <div class="profile-userbuttons">
-                        @*<button type="button" class="btn btn-success btn-sm">Follow</button>*@
-                        <button type="button" class="btn btn-danger btn-sm">Logout</button>
-                    </div>
-                    <!-- END SIDEBAR BUTTONS -->
-                    <!-- SIDEBAR MENU -->
-                    <div class="profile-usermenu">
-                        <ul class="nav">
-                            <li class="active">
-                                @Html.ActionLink("Início", "Index", "Home", new { @class = "glyphicon glyphicon-home" })
-                            </li>
-                            <li>
-                                @Html.ActionLink("Sobre", "About", "Home", new { @class = "glyphicon glyphicon-user" })
-                            </li>
-                            <li>
-                                @Html.ActionLink("Contato", "Contact", "Home", new { @class = "glyphicon glyphicon-ok" })
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="glyphicon glyphicon-flag"></i>
-                                    Help
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- END MENU -->
-                </div>
-            </div>
-            <div class="col-md-9">
-                <div class="profile-content">
-                    <div class="container body-content">
-                        @RenderBody()
-                        <hr />
-                        <footer>
-                            <p>&copy; @DateTime.Now.Year - Meu Aplicativo ASP.NET</p>
-                        </footer>
-                    </div>
-                </div>
-            </div>
+    <div class="nav-side-menu">
+        <div class="brand">Brand Logo</div>
+        <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+
+        <div class="menu-list">
+
+            <ul id="menu-content" class="menu-content collapse out">
+                <li>
+                    <a href="#">
+                        <i class="fa fa-dashboard fa-lg"></i> Dashboard
+                    </a>
+                </li>
+                <li data-toggle="collapse" data-target="#products" class="collapsed active">
+                    <a href="#"><i class="fa fa-gift fa-lg"></i> UI Elements <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="products">
+                    <li class="active"><a href="#">CSS3 Animation</a></li>
+                    <li><a href="#">General</a></li>
+                    <li><a href="#">Buttons</a></li>
+                    <li><a href="#">Tabs & Accordions</a></li>
+                    <li><a href="#">Typography</a></li>
+                    <li><a href="#">FontAwesome</a></li>
+                    <li><a href="#">Slider</a></li>
+                    <li><a href="#">Panels</a></li>
+                    <li><a href="#">Widgets</a></li>
+                    <li><a href="#">Bootstrap Model</a></li>
+                </ul>
+
+                <li data-toggle="collapse" data-target="#service" class="collapsed">
+                    <a href="#"><i class="fa fa-globe fa-lg"></i> Services <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="service">
+                    <li>New Service 1</li>
+                    <li>New Service 2</li>
+                    <li>New Service 3</li>
+                </ul>
+
+                <li data-toggle="collapse" data-target="#new" class="collapsed">
+                    <a href="#"><i class="fa fa-car fa-lg"></i> New <span class="arrow"></span></a>
+                </li>
+                <ul class="sub-menu collapse" id="new">
+                    <li>New New 1</li>
+                    <li>New New 2</li>
+                    <li>New New 3</li>
+                </ul>
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-user fa-lg"></i> Profile
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-users fa-lg"></i> Users
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
     @*Fim do Bootstrap*@
+    <div class="col-md-9">
+        <div class="profile-content">
+            <div class="container body-content">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - Meu Aplicativo ASP.NET</p>
+                </footer>
+            </div>
+        </div>
+    </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
