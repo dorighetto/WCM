@@ -7,7 +7,11 @@
     <title>@ViewBag.Title - Meu Aplicativo ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/MenuCss.css")
+    @Styles.Render("/Content/MenuCss.css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/MenuJs.js")
+    @Scripts.Render("/Scripts/MenuJs.js")
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
     @*Inicio do Bootstrap*@
@@ -18,16 +22,18 @@
         <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
             <ul class="nav sidebar-nav">
                 <li class="sidebar-brand">
-                    @Html.ActionLink("Home", "Index", "Home")
+                    <a href="#">
+                        Brand
+                    </a>
                 </li>
                 <li>
-                    @Html.ActionLink("Membros", "Index", "Membros")
+                    <a href="#">Home</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Cargos", "Index", "Cargos")
+                    <a href="#">About</a>
                 </li>
                 <li>
-                    @Html.ActionLink("Status", "Index", "Status")
+                    <a href="#">Events</a>
                 </li>
                 <li>
                     <a href="#">Team</a>
@@ -88,7 +94,6 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/Scripts/MenuJs.js")
     @RenderSection("scripts", required: false)
 </body>
 </html>
